@@ -86,8 +86,8 @@ function List({ employees, handleEdit, handleDelete }) {
           </tr>
         </thead>
         <tbody>
-          {filteredEmployees.length > 0 ? (
-            filteredEmployees.map((employee, i) => (
+          {currentEmployees.length > 0 ? (
+            currentEmployees.map((employee, i) => (
               <tr
                 key={employee.id}
                 className={i % 2 === 0 ? "bg-white" : "bg-gray-100"}
