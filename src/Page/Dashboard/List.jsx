@@ -5,7 +5,7 @@ function List({ employees, handleEdit, handleDelete }) {
   const [departmentFilter, setDepartmentFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
 
-  // Filter Employees
+  
   const filteredEmployees = employees.filter((employee) => {
     const matchesSearch =
       employee.employeeName.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -24,9 +24,8 @@ function List({ employees, handleEdit, handleDelete }) {
 
   return (
     <div className="overflow-x-auto w-screen p-4">
-      {/* 🔍 Search and Filter Controls */}
       <div className="flex flex-wrap gap-4 mb-4">
-        {/* Search */}
+        {/* Search name or email */}
         <input
           type="text"
           placeholder="Search by Name or Email"
@@ -46,7 +45,6 @@ function List({ employees, handleEdit, handleDelete }) {
           <option value="IT">IT</option>
           <option value="SDE">SDE</option>
           <option value="Finance">Finance</option>
-          {/* add more dynamically if needed */}
         </select>
 
         {/* Status Filter */}

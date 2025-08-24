@@ -131,7 +131,7 @@ function Add({ employees, setEmployees, setIsAdding }) {
   value={role}
   onChange={(e) => setRole(e.target.value)}
   className="border rounded-md p-2 w-full"
-  disabled={!department}  // disable until department is selected
+  disabled={!department}  
 >
   <option value="" >Select Role</option>
   {department === "HR" && (

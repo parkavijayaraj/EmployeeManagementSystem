@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 function Edit({ employees, selectedemployee, setEmployees, setISEditing }) {
   const id = selectedemployee.id;
 
-  // ✅ initialize with empty strings
+  
   const [employeeName, setEmployeeName] = useState('');
   const [email, setEmail] = useState('');
   const [department, setDepartment] = useState('');
@@ -12,7 +12,7 @@ function Edit({ employees, selectedemployee, setEmployees, setISEditing }) {
   const [date, setDate] = useState('');
   const [status, setStatus] = useState('');
 
-  // ✅ populate values from selectedemployee
+  
   useEffect(() => {
     if (selectedemployee) {
       setEmployeeName(selectedemployee.employeeName || '');
@@ -108,7 +108,6 @@ function Edit({ employees, selectedemployee, setEmployees, setISEditing }) {
           value={department}
           onChange={(e) => {
             setDepartment(e.target.value);
-             // reset role when department changes
           }}
           className="border rounded-md p-2 w-full"
         >
