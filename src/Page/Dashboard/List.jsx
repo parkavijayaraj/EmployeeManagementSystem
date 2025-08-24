@@ -4,7 +4,8 @@ function List({ employees, handleEdit, handleDelete }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [departmentFilter, setDepartmentFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const employeesPerPage = 8;
   
   const filteredEmployees = employees.filter((employee) => {
     const matchesSearch =
@@ -20,7 +21,18 @@ function List({ employees, handleEdit, handleDelete }) {
       : true;
 
     return matchesSearch && matchesDepartment && matchesStatus;
-  });
+});
+   // Pagination Logic
+  const indexOfLastEmployee = currentPage * employeesPerPage;
+  const indexOfFirstEmployee = indexOfLastEmployee - employeesPerPage;
+  const currentEmployees = filteredEmployees.slice(
+    indexOfFirstEmployee,
+    indexOfLastEmployee
+  );
+  const totalPages = Math.ceil(filteredEmployees.length / employeesPerPage);
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <div className="overflow-x-auto w-screen p-4">
@@ -112,6 +124,21 @@ function List({ employees, handleEdit, handleDelete }) {
           )}
         </tbody>
       </table>
+      <div className="flex justify-center mt-4 gap-2">
+        {Array.from({ length: totalPages }, (_, i) => (
+          <button
+            key={i + 1}
+            onClick={() => handlePageChange(i + 1)}
+            className={`px-3 py-1 border rounded ${
+              currentPage === i + 1
+                ? "bg-blue-500 text-white"
+                : "bg-white hover:bg-gray-200"
+            }`}
+          >
+            {i + 1}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
